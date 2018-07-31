@@ -30,8 +30,6 @@ bool isMedian(vector<int>&, int, int, int);
 
 int main()
 {
-    //vector<int> testdata{1,2,3,4,5,6,7,8};
-    //vector<int> testdata{8,7,6,5,4,3,2,1};
     vector<int> testdata{3,8,2,5,1,4,7,6};
     comparisons = 0;
     quicksort(testdata, Pivot::FIRST);
@@ -47,7 +45,7 @@ int main()
 
     vector<int> dataFromFile;
     ifstream dataFile;
-    dataFile.open("QuickSort.txt", ifstream::in);
+    dataFile.open("./Data_Files/QuickSort.txt", ifstream::in);
     if (!dataFile.is_open())
         cout << "Unable to open file" << endl;
 

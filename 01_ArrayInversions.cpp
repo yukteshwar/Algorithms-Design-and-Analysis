@@ -16,7 +16,7 @@ count the number of inversions in the given list in O(n*log(n)).
 
 using namespace std;
 
-long int CountInversions (vector<int>);
+long int CountInversions(vector<int>);
 long int SortAndCountInversions(vector<int>, size_t, size_t);
 long int MergeAndCountSplitInversions(vector<int>, size_t, size_t, size_t);
 
@@ -31,22 +31,22 @@ int main()
 
     vector<int> dataFromFile;
     ifstream dataFile;
-    dataFile.open("IntegerArray.txt", ifstream::in);
+    dataFile.open("./Data_Files/IntegerArray.txt", ifstream::in);
     if (!dataFile.is_open())
         cout << "Unable to open file" << endl;
-    
+
     string line;
 
     while (getline(dataFile, line))
         dataFromFile.push_back(stoi(line));
-    
+
     cout << dataFromFile.size() << endl;
     cout << CountInversions(dataFromFile) << endl;
 
     return 0;
 }
 
-long int CountInversions (vector<int> dataArray)
+long int CountInversions(vector<int> dataArray)
 {
     return SortAndCountInversions(dataArray, 0, dataArray.size() - 1);
 }
@@ -73,7 +73,7 @@ long int MergeAndCountSplitInversions(vector<int> dataArray, size_t start, size_
 
     while (i < mid || j <= end)
     {
-        if(i == mid)
+        if (i == mid)
         {
             res.push_back(dataArray[j]);
             j++;
