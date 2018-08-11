@@ -10,6 +10,7 @@ count the number of inversions in the given list in O(n*log(n)).
 
 #include <iostream>
 #include <fstream>
+#include <iterator>
 #include <vector>
 #include <string>
 #include <cmath>
@@ -29,17 +30,16 @@ int main()
     vector<int> data3{1, 3, 5, 2, 4, 6};
     cout << CountInversions(data3) << endl;
 
-    vector<int> dataFromFile;
     ifstream dataFile;
     dataFile.open("./Data_Files/IntegerArray.txt", ifstream::in);
     if (!dataFile.is_open())
         cout << "Unable to open file" << endl;
+    
+    istream_iterator<int> dataBegin(dataFile);
+    istream_iterator<int> dataEnd;
 
-    string line;
-
-    while (getline(dataFile, line))
-        dataFromFile.push_back(stoi(line));
-
+    vector<int> dataFromFile(dataBegin, dataEnd);
+    
     cout << dataFromFile.size() << endl;
     cout << CountInversions(dataFromFile) << endl;
 

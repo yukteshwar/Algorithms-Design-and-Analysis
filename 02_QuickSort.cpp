@@ -10,6 +10,7 @@ count the number of inversions in the given list in O(n*log(n)).
 
 #include <iostream>
 #include <fstream>
+#include <iterator>
 #include <vector>
 #include <string>
 #include <cmath>
@@ -43,16 +44,15 @@ int main()
     quicksort(testdata, Pivot::MEDIAN);
     cout << comparisons << endl;
 
-    vector<int> dataFromFile;
     ifstream dataFile;
     dataFile.open("./Data_Files/QuickSort.txt", ifstream::in);
     if (!dataFile.is_open())
         cout << "Unable to open file" << endl;
 
-    string line;
+    istream_iterator<int> dataBegin(dataFile);
+    istream_iterator<int> dataEnd;
 
-    while (getline(dataFile, line))
-        dataFromFile.push_back(stoi(line));
+    vector<int> dataFromFile(dataBegin, dataEnd);
 
     cout << dataFromFile.size() << endl;
 
